@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="574.0" prefWidth="890.0" stylesheets="@../styles/BorrowFormStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BorrowController">
+
+    <left>
+        <VBox prefHeight="529.0" prefWidth="318.0" spacing="15" styleClass="sidebar">
+            <Label styleClass="logo" text="📚 Library Management - JPA" />
+            <Separator />
+
+            <Label styleClass="section-label" text="BOOK" />
+            <ComboBox fx:id="booksCombobox" promptText="Select a book..." styleClass="input" />
+
+            <Label styleClass="section-label" text="STUDENT" />
+            <ComboBox fx:id="studentsCombobox" promptText="Select a student..." styleClass="input" />
+
+            <HBox spacing="10">
+                <VBox>
+                    <Label styleClass="section-label" text="BORROW DATE" />
+                    <DatePicker fx:id="borrowDate" styleClass="input" />
+                </VBox>
+                <VBox>
+                    <Label styleClass="section-label" text="RETURN DATE" />
+                    <DatePicker fx:id="returnDate" styleClass="input" />
+                </VBox>
+            </HBox>
+
+            <HBox spacing="10">
+                <VBox />
+                <VBox>
+                    <Label styleClass="section-label" text="STATUS" />
+                    <CheckBox fx:id="status" styleClass="checkbox" text="Returned" />
+                </VBox>
+            </HBox>
+
+            <Separator />
+            <Label styleClass="section-label" text="ACTIONS" />
+
+            <HBox spacing="8">
+                <Button onAction="#viewHandle" prefHeight="23.0" prefWidth="74.0" styleClass="btn-secondary" text="View" />
+                <Button onAction="#borrowHandle" prefHeight="23.0" prefWidth="66.0" styleClass="btn-primary" text="Borrow" />
+                <Button onAction="#returnHandle" prefHeight="23.0" prefWidth="72.0" styleClass="btn-success" text="Return" />
+                <Button onAction="#deleteHandle" prefHeight="23.0" prefWidth="63.0" styleClass="btn-danger" text="Delete" />
+            </HBox>
+            
+            <Separator />
+            <Label styleClass="section-label" text="QUICK SEARCH" />
+
+            <HBox prefHeight="26.0" prefWidth="278.0" spacing="8">
+                <Button onAction="#borrowedBooksHandle" prefHeight="26.0" prefWidth="286.0" styleClass="btn-outline" text="📖 Borrowed Books" />
+            </HBox>
+
+            <HBox prefHeight="47.0" prefWidth="278.0" spacing="8">
+                <Button onAction="#searchbyIds" prefHeight="26.0" prefWidth="286.0" styleClass="btn-outline" text="🔍 Search by IDs" />
+            </HBox>
+            
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane styleClass="content">
+            <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" styleClass="custom-table" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="borrowIdTC" prefWidth="84.0" text="BORROW ID" />
+                    <TableColumn fx:id="bookIdTC" prefWidth="85.6" text="BOOK ID" />
+                    <TableColumn fx:id="studentIdTC" prefWidth="92.8" text="STUDENT ID" />
+                    <TableColumn fx:id="borrowDateTC" prefWidth="108.8" text="BORROW DATE" />
+                    <TableColumn fx:id="returnDateTC" prefWidth="113.6" text="RETURN DATE" />
+                    <TableColumn fx:id="statusTC" prefWidth="83.2" text="STATUS" />
+                </columns>
+            </TableView>
+        </StackPane>
+    </center>
+</BorderPane>
